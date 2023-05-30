@@ -44,7 +44,7 @@ http_archive(
         "@//third_party:mediapipe_extension.diff",
         # "@//third_party:mediapipe_emscripten_patch.diff",
     ],
-    sha256 = "afde0e4cb85409260352c05bd2d62cc0be93655ae33256e12f93b1b194ff73f4",
+    sha256 = "2e530fbe886baaf2a45323751de9a55a5cac7a3e7f8fd36ea4779f09b88c6af0",
     strip_prefix = "mediapipe-0.9.1",
     urls = ["https://github.com/newnon/mediapipe/archive/refs/tags/v0.9.1.tar.gz"],
 )

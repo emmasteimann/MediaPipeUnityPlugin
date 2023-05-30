@@ -302,6 +302,8 @@ cc_library(
         "@com_google_mediapipe//mediapipe/calculators/core:packet_presence_calculator",
         "@com_google_mediapipe//mediapipe/calculators/core:flow_limiter_calculator",
         "@com_google_mediapipe//mediapipe/calculators/image:image_transformation_calculator",
+        "@com_google_mediapipe//mediapipe/calculators/tensor:landmarks_to_tensor_calculator",
+        "@com_google_mediapipe//mediapipe/calculators/tensor:tensors_to_classification_calculator",
     ] + select({
         "@com_google_mediapipe//mediapipe/gpu:disable_gpu": [],
         "//conditions:default": [
@@ -371,9 +373,11 @@ cc_library(
     deps = select({
         "@com_google_mediapipe//mediapipe/gpu:disable_gpu": [
             "@com_google_mediapipe//mediapipe/graphs/face_mesh:desktop_live_calculators",
+            "@com_google_mediapipe//mediapipe/graphs/face_blendshape:face_blendshape_desktop_live",
         ],
         "//conditions:default": [
             "@com_google_mediapipe//mediapipe/graphs/face_mesh:desktop_live_gpu_calculators",
+            "@com_google_mediapipe//mediapipe/graphs/face_blendshape:face_blendshape_mobile",
         ],
     }),
 )
@@ -569,6 +573,7 @@ filegroup(
         "@com_google_mediapipe//mediapipe/modules/face_detection:face_detection_short_range.tflite",
         "@com_google_mediapipe//mediapipe/modules/face_landmark:face_landmark.tflite",
         "@com_google_mediapipe//mediapipe/modules/face_landmark:face_landmark_with_attention.tflite",
+        "@com_google_mediapipe//mediapipe/modules/face_blendshape:face_blendshapes.tflite",
     ],
 )
 
