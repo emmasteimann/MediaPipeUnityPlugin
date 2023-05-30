@@ -44,9 +44,9 @@ http_archive(
         "@//third_party:mediapipe_extension.diff",
         # "@//third_party:mediapipe_emscripten_patch.diff",
     ],
-    sha256 = "437de7632f37b95424106d689f9722c280a571fa452675a22c708cb851395ea7",
+    sha256 = "afde0e4cb85409260352c05bd2d62cc0be93655ae33256e12f93b1b194ff73f4",
     strip_prefix = "mediapipe-0.9.1",
-    urls = ["https://github.com/google/mediapipe/archive/v0.9.1.tar.gz"],
+    urls = ["https://github.com/newnon/mediapipe/archive/refs/tags/v0.9.1.tar.gz"],
 )
 
 # ABSL cpp library lts_2021_03_24, patch 2.
