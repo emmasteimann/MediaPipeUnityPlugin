@@ -176,6 +176,7 @@ namespace Mediapipe.Unity.FaceMesh
     {
       return new List<WaitForResult> {
         WaitForAsset("face_detection_short_range.bytes"),
+        WaitForAsset("face_blendshapes.bytes"),
         WaitForAsset(refineLandmarks ? "face_landmark_with_attention.bytes" : "face_landmark.bytes"),
       };
     }

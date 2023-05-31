@@ -373,11 +373,11 @@ cc_library(
     deps = select({
         "@com_google_mediapipe//mediapipe/gpu:disable_gpu": [
             "@com_google_mediapipe//mediapipe/graphs/face_mesh:desktop_live_calculators",
-            "@com_google_mediapipe//mediapipe/graphs/face_blendshape:face_blendshape_desktop_live",
+            "@com_google_mediapipe//mediapipe/graphs/face_blendshape:desktop_live_calculators",
         ],
         "//conditions:default": [
             "@com_google_mediapipe//mediapipe/graphs/face_mesh:desktop_live_gpu_calculators",
-            "@com_google_mediapipe//mediapipe/graphs/face_blendshape:face_blendshape_mobile",
+            "@com_google_mediapipe//mediapipe/graphs/face_blendshape:desktop_live_gpu_calculators",
         ],
     }),
 )
