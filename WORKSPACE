@@ -44,26 +44,25 @@ http_archive(
         "@//third_party:mediapipe_extension.diff",
         # "@//third_party:mediapipe_emscripten_patch.diff",
     ],
-    sha256 = "2e530fbe886baaf2a45323751de9a55a5cac7a3e7f8fd36ea4779f09b88c6af0",
-    strip_prefix = "mediapipe-0.9.1",
-    urls = ["https://github.com/newnon/mediapipe/archive/refs/tags/v0.9.1.tar.gz"],
+    sha256 = "39da28504f4977bff52ee186eb76f7982e006a42a853a8b0cdd5b756cb5f8c6e",
+    strip_prefix = "mediapipe-0.9.2.1",
+    urls = ["https://github.com/google/mediapipe/archive/refs/tags/v0.9.2.1.tar.gz"],
 )
 
-# ABSL cpp library lts_2021_03_24, patch 2.
+# ABSL cpp library lts_2023_01_25.
 http_archive(
     name = "com_google_absl",
+    urls = [
+        "https://github.com/abseil/abseil-cpp/archive/refs/tags/20230125.0.tar.gz",
+    ],
+    patches = [
+        #"@com_google_mediapipe//third_party:com_google_absl_windows_patch.diff",
+    ],
     patch_args = [
         "-p1",
     ],
-    # Remove after https://github.com/abseil/abseil-cpp/issues/326 is solved.
-    patches = [
-        "@com_google_mediapipe//third_party:com_google_absl_f863b622fe13612433fdf43f76547d5edda0c93001.diff",
-    ],
-    sha256 = "91ac87d30cc6d79f9ab974c51874a704de9c2647c40f6932597329a282217ba8",
-    strip_prefix = "abseil-cpp-20220623.1",
-    urls = [
-        "https://github.com/abseil/abseil-cpp/archive/refs/tags/20220623.1.tar.gz",
-    ],
+    strip_prefix = "abseil-cpp-20230125.0",
+    sha256 = "3ea49a7d97421b88a8c48a0de16c16048e17725c7ec0f1d3ea2683a2a75adc21"
 )
 
 http_archive(
@@ -445,9 +444,9 @@ http_archive(
 
 # TensorFlow repo should always go after the other external dependencies.
 # TF on 2022-08-10.
-_TENSORFLOW_GIT_COMMIT = "af1d5bc4fbb66d9e6cc1cf89503014a99233583b"
+_TENSORFLOW_GIT_COMMIT = "24f7ee636d62e1f8d8330357f8bbd65956dfb84d"
 
-_TENSORFLOW_SHA256 = "f85a5443264fc58a12d136ca6a30774b5bc25ceaf7d114d97f252351b3c3a2cb"
+_TENSORFLOW_SHA256 = "7f8a96dd99215c0cdc77230d3dbce43e60102b64a89203ad04aa09b0a187a4bd"
 
 http_archive(
     name = "org_tensorflow",
@@ -459,6 +458,7 @@ http_archive(
         # Diff is generated with a script, don't update it manually.
         "@com_google_mediapipe//third_party:org_tensorflow_custom_ops.diff",
         # "@//third_party:tensorflow_xnnpack_emscripten_fixes.diff",
+        "@//third_party:tensorflow_visibility_patch.diff",
     ],
     sha256 = _TENSORFLOW_SHA256,
     strip_prefix = "tensorflow-%s" % _TENSORFLOW_GIT_COMMIT,
